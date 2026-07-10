@@ -1,0 +1,9 @@
+#ifndef _USER_CONFIG_OVERRIDE_H_
+#define _USER_CONFIG_OVERRIDE_H_
+
+#define USE_TCA9554
+
+#define USE_EMULATION
+#define USE_EMULATION_HUE
+
+#endif
