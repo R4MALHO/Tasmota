@@ -21,18 +21,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install platformio
 
-      - name: Compilar Waveshare ESP32-S3
+      - name: Compilar Tasmota ESP32-S3
         run: |
-          platformio run -e waveshare32s3
+          platformio run -e tasmota32s3
 
       - name: Localizar firmware
         run: |
-          find .pio/build/waveshare32s3 -type f -name "*.bin" -print
+          find .pio/build/tasmota32s3 -type f -name "*.bin" -print
 
       - name: Salvar firmware
         uses: actions/upload-artifact@v4
         with:
           name: waveshare-tasmota
           path: |
-            .pio/build/waveshare32s3/*.bin
+            .pio/build/tasmota32s3/*.bin
           if-no-files-found: error
