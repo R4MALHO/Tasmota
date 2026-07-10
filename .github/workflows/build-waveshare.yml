@@ -1,0 +1,29 @@
+name: Build Waveshare Tasmota
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Instalar PlatformIO
+        run: pip install pioarduino
+
+      - name: Compilar ESP32-S3
+        run: platformio run -e tasmota32s3
+
+      - name: Salvar firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: waveshare-tasmota
+          path: build_output/
